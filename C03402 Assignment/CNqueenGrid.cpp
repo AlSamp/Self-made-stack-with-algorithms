@@ -31,6 +31,11 @@ void CNqueenGrid::setNext(CNqueenGrid* nextNode)
 	mpNextNode = nextNode;
 }
 
+int CNqueenGrid::getData()
+{
+	return 0;
+}
+
 void CNqueenGrid::print()
 {
 	for (int i = 0; i < mGridLength; i++)

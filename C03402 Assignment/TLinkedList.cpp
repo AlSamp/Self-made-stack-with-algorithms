@@ -61,7 +61,7 @@ void TLinkedList< TElement, Tdata>::pop()
 	}
 	else if (mpHead->getNext() == nullptr)
 	{
-		cout << mpHead->getData() << " popped" << endl;
+		//cout << mpHead->getData() << " popped" << endl;
 		delete(mpHead);
 		mpHead = nullptr;
 	}
@@ -82,7 +82,7 @@ void TLinkedList< TElement, Tdata>::pop()
 
 			if (pCurrent->getNext() == nullptr)
 			{
-				cout << pCurrent->getData() << " popped" << endl;
+				/*cout << pCurrent->getData() << " popped" << endl;*/
 				endOfList = true;
 				delete pCurrent;
 				pPrevious->setNext(nullptr);
@@ -114,7 +114,8 @@ void TLinkedList< TElement, Tdata>::top()
 
 			if (pCurrent->getNext() == nullptr)
 			{
-				cout << pCurrent->getData();
+				/*cout << pCurrent->getData();*/
+				cout << "top needs sorting out " << endl;
 			}
 
 
