@@ -24,12 +24,18 @@
     <ClCompile Include="CElement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CNqueenGrid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TLinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CElement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CNqueenGrid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

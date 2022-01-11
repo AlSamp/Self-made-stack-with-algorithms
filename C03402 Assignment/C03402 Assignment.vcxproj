@@ -140,11 +140,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CElement.cpp" />
+    <ClCompile Include="CNqueenGrid.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="TLinkedList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CElement.h" />
+    <ClInclude Include="CNqueenGrid.h" />
     <ClInclude Include="TLinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

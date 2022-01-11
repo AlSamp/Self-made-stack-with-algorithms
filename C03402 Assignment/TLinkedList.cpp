@@ -1,25 +1,28 @@
 #include "TLinkedList.h"
 
-TLinkedList::TLinkedList()
+template <class TElement, class Tdata>
+TLinkedList<TElement,Tdata>::TLinkedList()
 {
 	mpHead = nullptr;
 }
 
-TLinkedList::~TLinkedList()
+template<class TElement, class Tdata>
+TLinkedList<TElement,Tdata>::~TLinkedList()
 {
 	while (mpHead != nullptr)
 	{
-		CElement* pTemp = mpHead;
+		TElement* pTemp = mpHead;
 		mpHead = mpHead->getNext();
 		delete pTemp;
 	}
 }
 
-void TLinkedList::push(int data)
+template <class TElement, class Tdata>
+void TLinkedList<TElement, Tdata>::push(Tdata data)
 {
 
-	CElement* newElement = new CElement(data);
-	CElement* pCurrent = mpHead;
+	TElement* newElement = new TElement(data);
+	TElement* pCurrent = mpHead;
 	bool endOfList = false;
 
 	if (mpHead == nullptr) // if the list is empty
@@ -44,10 +47,11 @@ void TLinkedList::push(int data)
 	}
 }
 
-void TLinkedList::pop()
+template <class TElement, class Tdata>
+void TLinkedList< TElement, Tdata>::pop()
 {
-	CElement* pCurrent = mpHead;
-	CElement* pPrevious = mpHead;
+	TElement* pCurrent = mpHead;
+	TElement* pPrevious = mpHead;
 	bool endOfList = false;
 
 	if (mpHead == nullptr)
@@ -91,9 +95,10 @@ void TLinkedList::pop()
 
 }
 
-void TLinkedList::top()
+template <class TElement, class Tdata>
+void TLinkedList< TElement, Tdata>::top()
 {
-	CElement* pCurrent = mpHead;
+	TElement* pCurrent = mpHead;
 	bool endOfList = false;
 
 	if (mpHead == nullptr) // if the list is empty
@@ -115,14 +120,12 @@ void TLinkedList::top()
 
 		}
 	}
-
-
-
 }
 
-void TLinkedList::toString()
+template <class TElement, class Tdata>
+void TLinkedList< TElement, Tdata>::toString()
 {
-	CElement* pCurrent = mpHead;
+	TElement* pCurrent = mpHead;
 	bool endOfList = false;
 
 	if (mpHead == nullptr)
@@ -140,7 +143,7 @@ void TLinkedList::toString()
 			}
 			else
 			{
-				cout << pCurrent->getData() << endl; // output data
+				pCurrent->print(); // output data
 
 				if (endOfList == false) // 
 				{
@@ -154,7 +157,8 @@ void TLinkedList::toString()
 
 }
 
-bool TLinkedList::isEmpty()
+template <class TElement, class Tdata>
+bool TLinkedList<TElement, Tdata>::isEmpty()
 {
 	if (mpHead == nullptr)
 	{
@@ -162,9 +166,10 @@ bool TLinkedList::isEmpty()
 	}
 }
 
-int TLinkedList::size()
+template <class TElement, class Tdata>
+int TLinkedList<TElement,  Tdata>::size()
 {
-	CElement* pCurrent = mpHead;
+	TElement* pCurrent = mpHead;
 	int count = 0;
 
 	while (pCurrent != nullptr)

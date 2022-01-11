@@ -2,16 +2,17 @@
 #include "CElement.h"
 class CElement;
 
+template<class TElement, class Tdata>
 class TLinkedList
 {
 private:
 
-	CElement* mpHead;
+	TElement* mpHead;
 
 public:
 	TLinkedList();
 	~TLinkedList();
-	void push(int data);
+	void push(Tdata data);
 	void pop();
 	void top();
 	void toString();

@@ -1,6 +1,6 @@
 #include <iostream>
-#include "TLinkedList.h"
-#include "CElement.h"
+#include "TLinkedList.cpp"
+#include "CNqueenGrid.h"
 #define _CRTDBG_MAP_ALLOC
 #include <crtdbg.h>
 
@@ -12,28 +12,19 @@ using namespace std;
 
 int main()
 {
-	cout << "This is from main " << endl;
+	int gridLength;
+	cout << "Please enter a number - " << endl;
+	cin >> gridLength;
 
-	TLinkedList* myList = new TLinkedList();
+	//array<double, 3, 3>
+	TLinkedList<CNqueenGrid, int>* myList = new TLinkedList<CNqueenGrid, int>;
 
-	myList->push(10);
-	myList->push(20);
-	myList->push(30);
-	myList->push(40);
-	myList->push(50);
-
-	myList->toString();
-	myList->pop();
-	myList->pop();
-	myList->pop();
-	myList->pop();
-	myList->pop();
-	myList->pop();
+	myList->push(gridLength);
 
 	myList->toString();
-	myList->top();
 
-	cout << endl;
+
+
 
 
 	delete myList;
