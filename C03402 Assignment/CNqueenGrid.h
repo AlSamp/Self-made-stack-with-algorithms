@@ -4,10 +4,11 @@ class CNqueenGrid : virtual public CElement
 {
 private:
 	CNqueenGrid* mpNextNode;
-	char** mGrid;
 	int mGridLength;
+	char** mGrid;
+	
 public:
-	CNqueenGrid();
+	char** getGrid(); // super duper importante
 	CNqueenGrid(int gridLength);
 	~CNqueenGrid();
 	CNqueenGrid* getNext();
@@ -15,6 +16,7 @@ public:
 	void setNext(CNqueenGrid* nextNode);
 	int getData();
 	void print();
+
 
 };
 

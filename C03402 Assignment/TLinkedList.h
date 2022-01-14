@@ -2,7 +2,7 @@
 #include "CElement.h"
 class CElement;
 
-template<class TElement, class Tdata>
+template<class TElement ,class Tdata>
 class TLinkedList
 {
 private:
@@ -12,6 +12,7 @@ private:
 public:
 	TLinkedList();
 	~TLinkedList();
+	TElement* getHead();
 	void push(Tdata data);
 	void pop();
 	void top();

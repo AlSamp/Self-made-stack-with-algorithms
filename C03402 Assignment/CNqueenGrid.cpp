@@ -5,10 +5,18 @@ CNqueenGrid::CNqueenGrid(int gridLength)
 	mpNextNode = nullptr;
 
 	mGridLength = gridLength;
-	mGrid = new char* [mGridLength];
+	mGrid = new char* [mGridLength]; //creates the grid of gridLength(n)
 	for (int i = 0; i < mGridLength; i++)
 	{
 		mGrid[i] = new char[mGridLength];
+	}
+
+	for (int i = 0; i < mGridLength; i++)
+	{
+		for (int j = 0; j < mGridLength; j++)
+		{
+			mGrid[i][j] = '.';
+		}
 	}
 }
 
@@ -36,15 +44,22 @@ int CNqueenGrid::getData()
 	return 0;
 }
 
+
+
 void CNqueenGrid::print()
 {
 	for (int i = 0; i < mGridLength; i++)
 	{
 		for (int j = 0; j < mGridLength; j++)
 		{
-			mGrid[i][j] = '.';
+			//mGrid[i][j] = '.';
 			cout << mGrid[i][j];
 		}
 		cout << endl;
 	}
+}
+
+char** CNqueenGrid::getGrid()
+{
+	return mGrid;
 }

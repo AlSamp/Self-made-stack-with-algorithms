@@ -1,8 +1,7 @@
 #include <iostream>
-#include "TLinkedList.cpp"
-#include "CNqueenGrid.h"
 #define _CRTDBG_MAP_ALLOC
 #include <crtdbg.h>
+#include "CNqueenSolution.h"
 
 using namespace std;
 
@@ -10,29 +9,23 @@ const int n = 4;
 
 using namespace std;
 
+
+
 int main()
 {
-	int gridLength;
-	cout << "Please enter a number - " << endl;
-	cin >> gridLength;
+	int input;
+	cout << "Please enter a number" << endl;
+	cin >> input;
 
-	//array<double, 3, 3>
-	TLinkedList<CNqueenGrid, int>* myList = new TLinkedList<CNqueenGrid, int>;
+	CNqueenSolution* solution = new CNqueenSolution(input);
 
-	myList->push(gridLength);
-
-	myList->toString();
-
-
-
-
-
-	delete myList;
+	solution->algorithm();
+	
+	
 
 	_CrtDumpMemoryLeaks();
 
 }
-
 
 
 

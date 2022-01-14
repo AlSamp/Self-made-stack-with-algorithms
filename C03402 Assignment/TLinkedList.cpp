@@ -17,6 +17,12 @@ TLinkedList<TElement,Tdata>::~TLinkedList()
 	}
 }
 
+template<class TElement, class Tdata>
+TElement* TLinkedList<TElement, Tdata>::getHead()
+{
+	return mpHead;
+}
+
 template <class TElement, class Tdata>
 void TLinkedList<TElement, Tdata>::push(Tdata data)
 {
