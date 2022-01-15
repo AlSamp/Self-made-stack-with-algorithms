@@ -11,6 +11,11 @@ CNqueenSolution::CNqueenSolution(int input)
 
 }
 
+CNqueenSolution::~CNqueenSolution()
+{
+	delete mpStack;
+}
+
 void CNqueenSolution::algorithm()
 {
 	mpStack->push(n); // This will create the first Element of the stack with a grid of n x n
@@ -20,38 +25,6 @@ void CNqueenSolution::algorithm()
 	int row = 0;
 	int col = 0;
 	int loops = 0;
-
-	//while (loops != limit)
-	//{
-	//	if (nQueen(ppTheGrid, row, col) == true) // if grid target is available, set it to be a Queen
-	//	{
-	//		ppTheGrid[row][col] = QUEEN;
-	//	}
-	//	else
-	//	{
-	//		if (row == n)
-	//		{
-	//			row = 0;
-	//		}
-	//		if (col == n)
-	//		{
-	//			col = 0;
-	//			row++;
-	//		}
-	//		col++;
-	//		
-	//		ppTheGrid[row][col] = 'x';
-	//	}
-	//	cout << "Attempt number : " << loops << endl;
-	//	mpStackElement->print();
-	//	gridSeperator();
-	//	
-	//	loops++;
-	//}
-	
-
-	
-
 
 
 
@@ -102,17 +75,21 @@ void CNqueenSolution::gridSeperator() //adds lines inbetween grids
 	cout << endl;
 }
 
+
+
+
+
 bool CNqueenSolution::nQueenPlacement(char** grid, int row, int col)
 {
 	bool solutionFound = false;
 	int queenCount = 0;
 	while (row != n) // 0 based index, once row is 4 a read access violation will happen so end the loop before that happens.
 	{
-		if (nQueenCheck(grid, row, col) == true) // if grid target is available, set it to be a Queen
-		{
+		if (nQueenCheck(grid, row, col) == true && col != n) // if grid target is available, set it to be a Queen
+		{												// make sure it doesnt write something out of bounds. avoid writing over memory with col != n
 			grid[row][col] = QUEEN;
 
-			if (grid[row][col] == QUEEN && col != n) // make sure it doesnt count something out of bounds.
+			if (grid[row][col] == QUEEN) 
 			{
 				queenCount++;
 			}

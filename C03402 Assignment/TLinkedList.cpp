@@ -14,6 +14,7 @@ TLinkedList<TElement,Tdata>::~TLinkedList()
 		TElement* pTemp = mpHead;
 		mpHead = mpHead->getNext();
 		delete pTemp;
+		pTemp = nullptr;
 	}
 }
 
@@ -91,6 +92,7 @@ void TLinkedList< TElement, Tdata>::pop()
 				/*cout << pCurrent->getData() << " popped" << endl;*/
 				endOfList = true;
 				delete pCurrent;
+				pCurrent = nullptr;
 				pPrevious->setNext(nullptr);
 			}
 

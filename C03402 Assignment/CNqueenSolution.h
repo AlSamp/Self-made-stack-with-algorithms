@@ -13,6 +13,7 @@ private:
 	CNqueenGrid* mpStackElement; // Will point to the element class on the stack.
 public:
 	CNqueenSolution(int input);
+	~CNqueenSolution();
 	void algorithm();
 	void gridSeperator();
 	bool nQueenCheck(char** grid, int row, int col);
