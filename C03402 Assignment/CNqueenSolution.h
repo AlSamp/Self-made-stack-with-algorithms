@@ -1,73 +1,22 @@
 #pragma once
 #include "CNqueenContainer.h"
+#include <iostream>
 
 class CNqueenSolution
 {
 private:
-	int n;
+
+	int n;						 // Length of the grid will be (n x n)
+	int matrix;
+	const char QUEEN = 'Q';
+	CNqueenContainer* mpStack;   // The stack itself
+	CNqueenGrid* mpStackElement; // Will point to the element class on the stack.
 public:
-	CNqueenSolution(int input) : n(input) {};
-	void algorithm()
-	{
-		CNqueenContainer* myStack = new CNqueenContainer();
-
-		
-		myStack->push(n);
-
-
-		CNqueenGrid* myPointer = myStack->getHead();
-
-		char **ppTheGrid = myPointer->getGrid();
-
-		int row = 0;
-		int col = 0;
-
-
-
-
-
-		for (int i = 0; i < n; i++)
-		{
-			for (int j = 0; j < n; j++)
-			{
-				if (row == n)
-				{
-					row = 0;
-				}
-				if (col == n)
-				{
-					row++;
-				}
-				col++;
-				//ppTheGrid[i][j] = 'X';
-				cout << ppTheGrid[i][j];
-			}
-			cout << endl;
-		}
-
-
-
-
-		for (int i = 0; i < n; i++)
-		{
-			for (int j = 0; j < n; j++)
-			{
-				
-			}
-		}
-
-		//*(*ppTheGrid + 1) = 'Q';
-
-		//for (int i = 0; i < n; i++)
-		//{
-		//	for (int j = 0; j < n; j++)
-		//	{
-		//		//ppTheGrid[i][j] = 'X';
-		//		cout << ppTheGrid[i][j];
-		//	}
-		//	cout << endl;
-		//}
-	}
+	CNqueenSolution(int input);
+	void algorithm();
+	void gridSeperator();
+	bool nQueenCheck(char** grid, int row, int col);
+	bool nQueenPlacement(char** grid, int row, int col);
 
 
 
