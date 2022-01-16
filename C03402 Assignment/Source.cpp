@@ -22,6 +22,7 @@ int main()
 	solution->algorithm();
 	delete solution;
 	
+	cout << "end of program" << endl;
 
 	_CrtDumpMemoryLeaks();
 

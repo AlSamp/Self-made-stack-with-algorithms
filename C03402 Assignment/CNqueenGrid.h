@@ -6,7 +6,8 @@ private:
 	CNqueenGrid* mpNextNode;
 	int mGridLength;
 	char** mGrid;
-	
+
+
 public:
 	char** getGrid(); // super duper importante
 	CNqueenGrid(int gridLength);

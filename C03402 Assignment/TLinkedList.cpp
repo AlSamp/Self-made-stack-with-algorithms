@@ -61,20 +61,14 @@ void TLinkedList< TElement, Tdata>::pop()
 	TElement* pPrevious = mpHead;
 	bool endOfList = false;
 
-	if (mpHead == nullptr)
+	if (mpHead == nullptr) // if the list is empty
 	{
 		cout << "Cannot pop the list is empty" << endl;
 		endOfList = true;
 	}
-	else if (mpHead->getNext() == nullptr)
+	else // if one of more elements on the list
 	{
-		//cout << mpHead->getData() << " popped" << endl;
-		delete(mpHead);
-		mpHead = nullptr;
-	}
-	else
-	{
-		while (pCurrent->getNext() != nullptr && endOfList == false) // if the list is not empty
+		while (pCurrent != nullptr && endOfList == false) // if the list is not empty
 		{
 
 			if (pPrevious == pCurrent) // desync previous and current
@@ -91,9 +85,9 @@ void TLinkedList< TElement, Tdata>::pop()
 			{
 				/*cout << pCurrent->getData() << " popped" << endl;*/
 				endOfList = true;
+				pPrevious->setNext(nullptr);
 				delete pCurrent;
 				pCurrent = nullptr;
-				pPrevious->setNext(nullptr);
 			}
 
 
@@ -104,7 +98,7 @@ void TLinkedList< TElement, Tdata>::pop()
 }
 
 template <class TElement, class Tdata>
-void TLinkedList< TElement, Tdata>::top()
+TElement* TLinkedList< TElement, Tdata>::top()
 {
 	TElement* pCurrent = mpHead;
 	bool endOfList = false;
@@ -114,16 +108,14 @@ void TLinkedList< TElement, Tdata>::top()
 		cout << "Cannot view top as list is empty" << endl;
 		endOfList = true;
 	}
-	else
+	else // if one of more elements on the list
 	{
-		while (pCurrent->getNext() != nullptr)
+		while (pCurrent != nullptr && endOfList == false) // if the list is not empty
 		{
-			pCurrent = pCurrent->getNext();
-
 			if (pCurrent->getNext() == nullptr)
 			{
-				/*cout << pCurrent->getData();*/
-				cout << "top needs sorting out " << endl;
+				endOfList = true;
+				return pCurrent;
 			}
 
 

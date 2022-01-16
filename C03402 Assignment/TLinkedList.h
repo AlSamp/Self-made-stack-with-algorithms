@@ -15,7 +15,7 @@ public:
 	TElement* getHead();
 	void push(Tdata data);
 	void pop();
-	void top();
+	TElement* top();
 	void toString();
 	bool isEmpty();
 	int size();

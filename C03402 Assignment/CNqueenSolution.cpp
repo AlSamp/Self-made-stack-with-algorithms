@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+
+
 CNqueenSolution::CNqueenSolution(int input)
 {
 	n = input;
@@ -20,49 +22,124 @@ void CNqueenSolution::algorithm()
 {
 	mpStack->push(n); // This will create the first Element of the stack with a grid of n x n
 	mpStackElement = mpStack->getHead(); // This points to the first Element of the stack
+	mpStackElement->print();
 	char** ppTheGrid = mpStackElement->getGrid(); // This holds the grid address on the element
 	int pushCount = 1;
 	int row = 0;
 	int col = 0;
-	int loops = 0;
 
-
-
-	int numSolutions = 0;
-	// going through each starting point
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < n; i++) // maybe 
 	{
-		for (int j = 0; j < n; j++)
+		nQueenPlacement(ppTheGrid, 0, i);
+		
+	
+	}
+
+
+}
+
+
+
+
+
+bool CNqueenSolution::nQueenPlacement(char** grid, int row, int col)
+{
+
+	int previousRow = row;
+	//if (previousRow < 0) previousRow = 0;
+	int previousCol = col;
+	static int queenCount = 0;
+	static int solutionsFound = 0;
+
+	//CNqueenGrid* mpStackPreviousElement = mpStackElement; // keep track of previous stack element.
+
+
+	//if (queenCount == n)
+	//{
+	//	queenCount--;
+	//	return false;
+	//}
+
+	if (col == n) // second base case for col
+	{
+		return false;
+	}
+
+	if (row == n) // recursive base case
+	{
+		if (queenCount == n)
 		{
-			if (row == n)
+			solutionsFound++;
+			cout << "Solution : " << solutionsFound << endl;
+			mpStackElement->print();
+			gridSeperator();
+
+		}
+			//mpStackElement = mpStackPreviousElement;
+			mpStack->pop();
+			return false;
+	}
+	else
+	{
+		for (int i = col; i < n; i++)
+		{
+			if (nQueenCheck(grid, row, i) == true) // if place available
 			{
-				row = 0;
+
+				//// maybe if
+				mpStack->push(n); // create another element with a grid of size n.
+				mpStackElement = mpStack->top(); // place the pointer at the tail of the list
+				char** newGrid = mpStackElement->getGrid(); // get the new elements grid
+
+				for (int x = 0; x < n; x++) // copy over the grid before placement of queen.
+				{
+					for (int y = 0; y < n; y++)
+					{
+						newGrid[x][y] = grid[x][y];
+
+					}
+
+				}
+	
+				newGrid[row][i] = QUEEN; // new grid set to hold the position of the freshly placed queen
+			
+				
+				
+				
+				cout << "Placing queen at " << row << "," << i << endl;
+				queenCount++;// track the amount of queens
+				cout << "Queen count = " << queenCount << endl;
+				
+				
+				//previousCol = i;
+				//
+				nQueenPlacement(newGrid, row + 1, col = 0); // recrusive call !!! checks next row placements
+
 			}
-			if (col == n)
+			else
 			{
-				col = 0;
-				row++;
-			}
-
-			//ppTheGrid[row][col] = 'Q';
-			if (nQueenPlacement(ppTheGrid, row, col) == true)
-			{
-				numSolutions++;
-				mpStackElement->print(); // only print solutions
-				gridSeperator();
+				
+				nQueenPlacement(grid,row,col + 1); // place a queen at the next available col
+				//mpStackElement = mpStackPreviousElement;
+				mpStack->pop();
+				queenCount--;
+				if (queenCount < 0) queenCount = 0;
+				return false;
 
 			}
-			mpStack->push(n);							// push a new element on to the stack
-			mpStackElement = mpStackElement->getNext(); //move along stack element pointer to the next element in the list that was just created
-			ppTheGrid = mpStackElement->getGrid();		// set the grid pointer to that elements grid.
 
-
-			col++;
 		}
 
+				//mpStackElement = mpStackPreviousElement;
+				//mpStack->pop();
+				////grid[previousRow][previousCol] = '.'; // pop
+				//cout << "Queen count = " << queenCount << endl;
+				//cout << "Backtracking at " << previousRow << "," << previousCol << endl;
+				//mpStackElement = mpStackPreviousElement;
+				//mpStack->pop();
+				
+				
 	}
-	cout << "Number of solutions found = " << numSolutions << endl;
-	
 
 }
 
@@ -75,53 +152,9 @@ void CNqueenSolution::gridSeperator() //adds lines inbetween grids
 	cout << endl;
 }
 
-
-
-
-
-bool CNqueenSolution::nQueenPlacement(char** grid, int row, int col)
-{
-	bool solutionFound = false;
-	int queenCount = 0;
-	while (row != n) // 0 based index, once row is 4 a read access violation will happen so end the loop before that happens.
-	{
-		if (nQueenCheck(grid, row, col) == true && col != n) // if grid target is available, set it to be a Queen
-		{												// make sure it doesnt write something out of bounds. avoid writing over memory with col != n
-			grid[row][col] = QUEEN;
-
-			if (grid[row][col] == QUEEN) 
-			{
-				queenCount++;
-			}
-
-		}
-		else
-		{
-			if (col == n) //at then end of a row move on to the next row and set column to 0.
-			{
-				row++;
-				col = 0;
-			}
-			else		 // else move along the column on the row
-			{
-				col++;
-			}
-		}
-	}
-
-	if (queenCount == n)
-	{
-		solutionFound = true;
-	}
-
-	return solutionFound;
-
-}
-
-
 bool CNqueenSolution::nQueenCheck(char** grid, int targetRow, int targetCol)
 {
-	bool placement = true;
+
 
 	// navigate along the row by moving along the columns	
 	for (int i = 0; i < n; i++)
@@ -129,8 +162,7 @@ bool CNqueenSolution::nQueenCheck(char** grid, int targetRow, int targetCol)
 	
 		if (grid[targetRow][i] == QUEEN)
 		{
-			placement = false;
-			break;
+			return false;
 
 		}
 	}
@@ -141,8 +173,7 @@ bool CNqueenSolution::nQueenCheck(char** grid, int targetRow, int targetCol)
 	{
 		if (grid[i][targetCol] == QUEEN)
 		{
-			placement = false;
-			break;
+			return false;
 
 		}
 
@@ -162,7 +193,7 @@ bool CNqueenSolution::nQueenCheck(char** grid, int targetRow, int targetCol)
 			}
 			else if (grid[copyRow][copyCol] == QUEEN)
 			{
-				placement = false;
+				return false;
 
 			}
 			copyRow++;
@@ -186,7 +217,7 @@ bool CNqueenSolution::nQueenCheck(char** grid, int targetRow, int targetCol)
 			}
 			else if (grid[copyRow][copyCol] == QUEEN)
 			{
-				placement = false;
+				return false;
 
 			}
 			copyRow--;
@@ -209,7 +240,7 @@ bool CNqueenSolution::nQueenCheck(char** grid, int targetRow, int targetCol)
 			}
 			else if (grid[copyRow][copyCol] == QUEEN)
 			{
-				placement = false;
+				return false;
 
 			}
 			copyRow--;
@@ -233,7 +264,7 @@ bool CNqueenSolution::nQueenCheck(char** grid, int targetRow, int targetCol)
 			
 			if (grid[copyRow][copyCol] == QUEEN)
 			{
-				placement = false;
+				return false;
 
 			}
 			copyRow++;
@@ -242,7 +273,6 @@ bool CNqueenSolution::nQueenCheck(char** grid, int targetRow, int targetCol)
 		}
 	}
 
-
-	return placement;
+	return true;
 
 }
