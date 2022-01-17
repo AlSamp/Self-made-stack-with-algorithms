@@ -83,7 +83,6 @@ void TLinkedList< TElement, Tdata>::pop()
 
 			if (pCurrent->getNext() == nullptr)
 			{
-				/*cout << pCurrent->getData() << " popped" << endl;*/
 				endOfList = true;
 				pPrevious->setNext(nullptr);
 				delete pCurrent;
@@ -116,6 +115,10 @@ TElement* TLinkedList< TElement, Tdata>::top()
 			{
 				endOfList = true;
 				return pCurrent;
+			}
+			else
+			{
+				pCurrent = pCurrent->getNext();
 			}
 
 

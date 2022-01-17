@@ -18,6 +18,7 @@ public:
 	void gridSeperator();
 	bool nQueenCheck(char** grid, int row, int col);
 	bool nQueenPlacement(char** grid, int row, int col);
+	bool nQueenSolutionFound(char** grid);
 
 
 

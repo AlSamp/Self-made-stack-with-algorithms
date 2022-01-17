@@ -21,21 +21,9 @@ CNqueenSolution::~CNqueenSolution()
 void CNqueenSolution::algorithm()
 {
 	mpStack->push(n); // This will create the first Element of the stack with a grid of n x n
-	mpStackElement = mpStack->getHead(); // This points to the first Element of the stack
-	mpStackElement->print();
+	mpStackElement = mpStack->top(); // This points to the first Element of the stack
 	char** ppTheGrid = mpStackElement->getGrid(); // This holds the grid address on the element
-	int pushCount = 1;
-	int row = 0;
-	int col = 0;
-
-	for (int i = 0; i < n; i++) // maybe 
-	{
-		nQueenPlacement(ppTheGrid, 0, i);
-		
-	
-	}
-
-
+	nQueenPlacement(ppTheGrid, 0, 0);		
 }
 
 
@@ -44,49 +32,38 @@ void CNqueenSolution::algorithm()
 
 bool CNqueenSolution::nQueenPlacement(char** grid, int row, int col)
 {
-
+	static int count = 0;
 	int previousRow = row;
-	//if (previousRow < 0) previousRow = 0;
 	int previousCol = col;
 	static int queenCount = 0;
-	static int solutionsFound = 0;
+	
 
-	//CNqueenGrid* mpStackPreviousElement = mpStackElement; // keep track of previous stack element.
+	CNqueenGrid* topOfTheStack = mpStack->top();
 
-
-	//if (queenCount == n)
-	//{
-	//	queenCount--;
-	//	return false;
-	//}
-
-	if (col == n) // second base case for col
+	if (nQueenSolutionFound(topOfTheStack->getGrid()) == true)
 	{
-		return false;
+		mpStack->pop();
+		mpStackElement = mpStack->top();
+		return false; // exit this loop
 	}
-
-	if (row == n) // recursive base case
+	else if (col == n) // second base case for col
 	{
-		if (queenCount == n)
-		{
-			solutionsFound++;
-			cout << "Solution : " << solutionsFound << endl;
-			mpStackElement->print();
-			gridSeperator();
-
-		}
-			//mpStackElement = mpStackPreviousElement;
-			mpStack->pop();
-			return false;
+		cout << "Backtracking" << endl;
+		mpStack->pop();
+		mpStackElement = mpStack->top();
+		return false;
 	}
 	else
 	{
 		for (int i = col; i < n; i++)
 		{
+				//cout << "the grid" << endl;
+				//mpStackElement->print();
+				//gridSeperator();
+
 			if (nQueenCheck(grid, row, i) == true) // if place available
 			{
 
-				//// maybe if
 				mpStack->push(n); // create another element with a grid of size n.
 				mpStackElement = mpStack->top(); // place the pointer at the tail of the list
 				char** newGrid = mpStackElement->getGrid(); // get the new elements grid
@@ -100,44 +77,32 @@ bool CNqueenSolution::nQueenPlacement(char** grid, int row, int col)
 					}
 
 				}
-	
-				newGrid[row][i] = QUEEN; // new grid set to hold the position of the freshly placed queen
-			
-				
-				
+					
+ 				newGrid[row][i] = QUEEN; // new grid set to hold the position of the freshly placed queen
 				
 				cout << "Placing queen at " << row << "," << i << endl;
-				queenCount++;// track the amount of queens
-				cout << "Queen count = " << queenCount << endl;
-				
-				
-				//previousCol = i;
-				//
-				nQueenPlacement(newGrid, row + 1, col = 0); // recrusive call !!! checks next row placements
 
+				if (row + 1 < n)
+				{
+				//cout << "search for next queen placement on row + 1 : (" << row + 1<< ") " << endl;
+				nQueenPlacement(newGrid, row + 1, 0); // recrusive call !!! checks next row placements
+
+				}
+				
+				
 			}
 			else
 			{
 				
+				
 				nQueenPlacement(grid,row,col + 1); // place a queen at the next available col
-				//mpStackElement = mpStackPreviousElement;
-				mpStack->pop();
-				queenCount--;
-				if (queenCount < 0) queenCount = 0;
+				col++;
+
 				return false;
 
 			}
-
+			col++; // move onto next column
 		}
-
-				//mpStackElement = mpStackPreviousElement;
-				//mpStack->pop();
-				////grid[previousRow][previousCol] = '.'; // pop
-				//cout << "Queen count = " << queenCount << endl;
-				//cout << "Backtracking at " << previousRow << "," << previousCol << endl;
-				//mpStackElement = mpStackPreviousElement;
-				//mpStack->pop();
-				
 				
 	}
 
@@ -274,5 +239,47 @@ bool CNqueenSolution::nQueenCheck(char** grid, int targetRow, int targetCol)
 	}
 
 	return true;
+
+}
+
+
+bool CNqueenSolution::nQueenSolutionFound(char** grid)
+{
+	static int solutionsFound = 0;
+	int queenCounter = 0;
+
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if (grid[i][j] == QUEEN)
+			{
+				queenCounter++;
+			}
+		}
+	}
+	//cout << " <--------------------------------------v" << endl;
+	//cout << queenCounter << " Queens found in grid :)" << endl;
+	//mpStackElement->print();
+	//cout << " <--------------------------------------^" << endl;
+
+
+
+	if (queenCounter == n)
+	{
+		solutionsFound++;
+
+		gridSeperator();
+		mpStackElement->print(); 
+		cout << "solutions found = " << solutionsFound << endl;
+		gridSeperator();
+
+		return true;
+
+	}
+	else
+	{
+		return false;
+	}
 
 }
