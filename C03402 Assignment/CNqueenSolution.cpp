@@ -48,7 +48,7 @@ bool CNqueenSolution::nQueenPlacement(char** grid, int row, int col)
 	}
 	else if (col == n) // second base case for col
 	{
-		cout << "Backtracking" << endl;
+		//cout << "Backtracking" << endl;
 		mpStack->pop();
 		mpStackElement = mpStack->top();
 		return false;
@@ -80,14 +80,12 @@ bool CNqueenSolution::nQueenPlacement(char** grid, int row, int col)
 					
  				newGrid[row][i] = QUEEN; // new grid set to hold the position of the freshly placed queen
 				
-				cout << "Placing queen at " << row << "," << i << endl;
+				//cout << "Placing queen at " << row << "," << i << endl;
 
-				if (row + 1 < n)
-				{
 				//cout << "search for next queen placement on row + 1 : (" << row + 1<< ") " << endl;
 				nQueenPlacement(newGrid, row + 1, 0); // recrusive call !!! checks next row placements
 
-				}
+
 				
 				
 			}
@@ -95,13 +93,13 @@ bool CNqueenSolution::nQueenPlacement(char** grid, int row, int col)
 			{
 				
 				
-				nQueenPlacement(grid,row,col + 1); // place a queen at the next available col
-				col++;
+				nQueenPlacement(grid,row,i + 1); // place a queen at the next available col
+				//col++;
 
 				return false;
 
 			}
-			col++; // move onto next column
+			//col++; // move onto next column
 		}
 				
 	}
