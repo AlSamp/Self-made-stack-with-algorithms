@@ -1,6 +1,6 @@
 #pragma once
 #include "CElement.h"
-class CNqueenGrid : virtual public CElement
+class CNqueenGrid : virtual public CElement<char**>
 {
 private:
 	CNqueenGrid* mpNextNode;
@@ -9,13 +9,13 @@ private:
 
 
 public:
-	char** getGrid(); // super duper importante
+
 	CNqueenGrid(int gridLength);
 	~CNqueenGrid();
 	CNqueenGrid* getNext();
 	void setNext() {};
 	void setNext(CNqueenGrid* nextNode);
-	int getData();
+	char** getData();// super duper importante
 	void print();
 
 

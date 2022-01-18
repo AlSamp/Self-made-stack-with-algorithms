@@ -7,7 +7,6 @@ class CNqueenSolution
 private:
 
 	int n;						 // Length of the grid will be (n x n)
-	int matrix;
 	const char QUEEN = 'Q';
 	CNqueenContainer* mpStack;   // The stack itself
 	CNqueenGrid* mpStackElement; // Will point to the element class on the stack.

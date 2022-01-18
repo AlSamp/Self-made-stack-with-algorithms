@@ -143,6 +143,9 @@
     <ClCompile Include="CNqueenContainer.cpp" />
     <ClCompile Include="CNqueenGrid.cpp" />
     <ClCompile Include="CNqueenSolution.cpp" />
+    <ClCompile Include="CPrefixPostfix.cpp" />
+    <ClCompile Include="CPrefixPostfixContainer.cpp" />
+    <ClCompile Include="CPrefixPostfixSolution.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="TLinkedList.cpp" />
   </ItemGroup>
@@ -151,6 +154,9 @@
     <ClInclude Include="CNqueenContainer.h" />
     <ClInclude Include="CNqueenGrid.h" />
     <ClInclude Include="CNqueenSolution.h" />
+    <ClInclude Include="CPrefixPostfix.h" />
+    <ClInclude Include="CPrefixPostfixContainer.h" />
+    <ClInclude Include="CPrefixPostfixSolution.h" />
     <ClInclude Include="TLinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

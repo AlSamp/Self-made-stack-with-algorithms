@@ -33,6 +33,15 @@
     <ClCompile Include="CNqueenSolution.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CPrefixPostfix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CPrefixPostfixContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CPrefixPostfixSolution.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TLinkedList.h">
@@ -48,6 +57,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CNqueenSolution.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CPrefixPostfix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CPrefixPostfixContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CPrefixPostfixSolution.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

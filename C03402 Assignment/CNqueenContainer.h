@@ -1,7 +1,8 @@
 #pragma once
 #include "CNqueenGrid.h"
-#include "TLinkedList.cpp"
+#include "TLinkedList.h"
 
-class CNqueenContainer : virtual public TLinkedList<CNqueenGrid,int>
+class CNqueenContainer :  public TLinkedList<CNqueenGrid,int>
 {
+
 };

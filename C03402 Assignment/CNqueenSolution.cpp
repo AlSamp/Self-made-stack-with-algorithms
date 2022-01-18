@@ -7,7 +7,6 @@ using namespace std;
 CNqueenSolution::CNqueenSolution(int input)
 {
 	n = input;
-	matrix = n * n;
 	mpStack = new CNqueenContainer();
 	mpStackElement = nullptr;
 
@@ -22,13 +21,9 @@ void CNqueenSolution::algorithm()
 {
 	mpStack->push(n); // This will create the first Element of the stack with a grid of n x n
 	mpStackElement = mpStack->top(); // This points to the first Element of the stack
-	char** ppTheGrid = mpStackElement->getGrid(); // This holds the grid address on the element
+	char** ppTheGrid = mpStackElement->getData(); // This holds the grid address on the element
 	nQueenPlacement(ppTheGrid, 0, 0);		
 }
-
-
-
-
 
 bool CNqueenSolution::nQueenPlacement(char** grid, int row, int col)
 {
@@ -40,7 +35,7 @@ bool CNqueenSolution::nQueenPlacement(char** grid, int row, int col)
 
 	CNqueenGrid* topOfTheStack = mpStack->top();
 
-	if (nQueenSolutionFound(topOfTheStack->getGrid()) == true)
+	if (nQueenSolutionFound(topOfTheStack->getData()) == true)
 	{
 		mpStack->pop();
 		mpStackElement = mpStack->top();
@@ -66,7 +61,7 @@ bool CNqueenSolution::nQueenPlacement(char** grid, int row, int col)
 
 				mpStack->push(n); // create another element with a grid of size n.
 				mpStackElement = mpStack->top(); // place the pointer at the tail of the list
-				char** newGrid = mpStackElement->getGrid(); // get the new elements grid
+				char** newGrid = mpStackElement->getData(); // get the new elements grid
 
 				for (int x = 0; x < n; x++) // copy over the grid before placement of queen.
 				{
@@ -84,14 +79,10 @@ bool CNqueenSolution::nQueenPlacement(char** grid, int row, int col)
 
 				//cout << "search for next queen placement on row + 1 : (" << row + 1<< ") " << endl;
 				nQueenPlacement(newGrid, row + 1, 0); // recrusive call !!! checks next row placements
-
-
-				
-				
+			
 			}
 			else
-			{
-				
+			{				
 				
 				nQueenPlacement(grid,row,i + 1); // place a queen at the next available col
 				//col++;
@@ -235,7 +226,6 @@ bool CNqueenSolution::nQueenCheck(char** grid, int targetRow, int targetCol)
 
 		}
 	}
-
 	return true;
 
 }
@@ -261,15 +251,13 @@ bool CNqueenSolution::nQueenSolutionFound(char** grid)
 	//mpStackElement->print();
 	//cout << " <--------------------------------------^" << endl;
 
-
-
 	if (queenCounter == n)
 	{
 		solutionsFound++;
 
 		gridSeperator();
 		mpStackElement->print(); 
-		cout << "solutions found = " << solutionsFound << endl;
+		cout << "Solution : " << solutionsFound << endl;
 		gridSeperator();
 
 		return true;

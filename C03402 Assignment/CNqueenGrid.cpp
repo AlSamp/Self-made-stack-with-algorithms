@@ -39,12 +39,10 @@ void CNqueenGrid::setNext(CNqueenGrid* nextNode)
 	mpNextNode = nextNode;
 }
 
-int CNqueenGrid::getData()
+char** CNqueenGrid::getData()
 {
-	return 0;
+	return mGrid;
 }
-
-
 
 void CNqueenGrid::print()
 {
@@ -52,14 +50,8 @@ void CNqueenGrid::print()
 	{
 		for (int j = 0; j < mGridLength; j++)
 		{
-			//mGrid[i][j] = '.';
 			cout << mGrid[i][j];
 		}
 		cout << endl;
 	}
-}
-
-char** CNqueenGrid::getGrid()
-{
-	return mGrid;
 }
