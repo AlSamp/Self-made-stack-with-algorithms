@@ -2,6 +2,8 @@
 #include "CElement.h"
 //template class CElement<class T>;
 
+
+
 template<class TElement ,class Tdata>
 class TLinkedList
 {
@@ -65,6 +67,8 @@ void TLinkedList<TElement, Tdata>::push(Tdata data)
 		endOfList = true;
 		mpHead = newElement;
 	}
+	else
+	{
 
 	while (pCurrent != nullptr && endOfList == false) // if the list isnt empty
 	{
@@ -80,6 +84,8 @@ void TLinkedList<TElement, Tdata>::push(Tdata data)
 		}
 
 	}
+	}
+
 }
 
 template <class TElement, class Tdata>
@@ -94,6 +100,12 @@ void TLinkedList< TElement, Tdata>::pop()
 		cout << "Cannot pop the list is empty" << endl;
 		endOfList = true;
 
+	}
+	else if (mpHead != nullptr && mpHead->getNext() == nullptr)
+	{
+		delete pCurrent;
+		mpHead = nullptr;
+		
 	}
 	else // if one of more elements on the list
 	{
@@ -208,8 +220,12 @@ bool TLinkedList<TElement, Tdata>::isEmpty()
 {
 	if (mpHead == nullptr)
 	{
-		cout << "List is empty" << endl;
+		//cout << "List is empty" << endl;
 		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 

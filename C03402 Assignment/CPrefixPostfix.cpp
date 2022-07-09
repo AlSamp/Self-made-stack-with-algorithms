@@ -8,7 +8,7 @@ CPrefixPostfix::CPrefixPostfix(char input)
 
 CPrefixPostfix::~CPrefixPostfix()
 {
-	cout << "Prefixpostfix destructor called" << endl;
+	
 }
 
 CPrefixPostfix* CPrefixPostfix::getNext()

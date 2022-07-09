@@ -60,7 +60,7 @@ bool CNqueenSolution::nQueenPlacement(char** grid, int row, int col)
 			{
 
 				mpStack->push(n); // create another element with a grid of size n.
-				mpStackElement = mpStack->top(); // place the pointer at the tail of the list
+				mpStackElement = mpStack->top(); // place the pointer at the tail of the list?????????????
 				char** newGrid = mpStackElement->getData(); // get the new elements grid
 
 				for (int x = 0; x < n; x++) // copy over the grid before placement of queen.

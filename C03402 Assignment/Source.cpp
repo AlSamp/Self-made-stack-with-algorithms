@@ -70,9 +70,15 @@ void PrefixPostfix()
 	cout << "Please enter an equation" << endl;
 	cin >> userEquation;
 	CPrefixPostfixSolution* solution = new CPrefixPostfixSolution(userEquation);
-	solution->algorithm();
+	solution->prefix();
+	solution->postfix();
+	cout << endl << endl;
+	cout << "the prefix solution  :	" << solution->mPrefixSolution << endl;
+	cout << "the postfix solution :	" << solution->mPostfixSolution << endl;
+	
 	cout << "end of program" << endl;
 
 	delete solution;
+
 }
 

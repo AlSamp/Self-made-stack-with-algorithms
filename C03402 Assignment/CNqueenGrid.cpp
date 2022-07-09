@@ -24,7 +24,7 @@ CNqueenGrid::~CNqueenGrid()
 {
 	for (int i = 0; i < mGridLength; i++)
 	{
-		delete [] mGrid[i]; // how did i figure this out lmfao
+		delete [] mGrid[i]; // how did i figure this out lol
 	}
 	delete[] mGrid;
 }
