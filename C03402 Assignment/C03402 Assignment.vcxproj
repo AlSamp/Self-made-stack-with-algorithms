@@ -155,7 +155,7 @@
     <ClInclude Include="CNqueenGrid.h" />
     <ClInclude Include="CNqueenSolution.h" />
     <ClInclude Include="CPrefixPostfix.h" />
-    <ClInclude Include="CPrefixPostfixContainer.h" />
+    <ClInclude Include="CPrefixPostfixStacks.h" />
     <ClInclude Include="CPrefixPostfixSolution.h" />
     <ClInclude Include="TLinkedList.h" />
   </ItemGroup>

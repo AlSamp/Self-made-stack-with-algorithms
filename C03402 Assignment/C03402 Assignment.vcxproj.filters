@@ -62,7 +62,7 @@
     <ClInclude Include="CPrefixPostfix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CPrefixPostfixContainer.h">
+    <ClInclude Include="CPrefixPostfixStacks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CPrefixPostfixSolution.h">

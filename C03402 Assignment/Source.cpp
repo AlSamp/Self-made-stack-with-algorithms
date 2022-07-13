@@ -73,12 +73,13 @@ void PrefixPostfix()
 	solution->prefix();
 	solution->postfix();
 	cout << endl << endl;
-	cout << "the prefix solution  :	" << solution->mPrefixSolution << endl;
-	cout << "the postfix solution :	" << solution->mPostfixSolution << endl;
-	
+	cout << "The equation		: " << userEquation << endl;
+	cout << "The prefix solution  :	" << solution->mPrefixSolution << endl;
+	cout << "The postfix solution :	" << solution->mPostfixSolution << endl;
+	solution->calculatePostfix();
+	solution->calculatePrefix();
 	cout << "end of program" << endl;
 
 	delete solution;
 
 }
-

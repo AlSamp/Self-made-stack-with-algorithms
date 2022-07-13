@@ -1,29 +1,28 @@
 #pragma once
-#include "CPrefixPostfixContainer.h"
+#include "CPrefixPostfixStacks.h"
+#include <math.h> // for pow()
 
 using namespace std;
 
 class CPrefixPostfixSolution
 {
 private:
-
-	//string equation = "6^2*(1+2)";
-	// string solution should = 62^12+*
-
 	string mEquation;
-	string mEquation2;
-	CPrefixPostfixContainer* mpOperatorStack;
-	CPrefixPostfix* mpStackElement;
-	//CPrefixPostfixContainer* mPrefixStack;
-public:
+	CCharStack* mpCharStack;
+	CDoubleStack* mpDoubleStack;
 
+public:
 	string mPrefixSolution;
 	string mPostfixSolution;
+
 	CPrefixPostfixSolution(string userInput);
 	~CPrefixPostfixSolution();
 
 	string postfixAlgorithm(string equation);
+	void calculatePostfix();
+	void calculatePrefix();
 	string prefixAlgorithm(string equation);
+	double calculate(char operant, double operand1, double operand2);
 	bool isOperator(char c);
 	int	 priority(char );
 	void prefix();
